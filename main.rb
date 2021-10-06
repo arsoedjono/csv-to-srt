@@ -28,6 +28,6 @@ target_name = file_path[-1].split('.').first
 
 ['id', 'en'].each do |lang|
   srt_file = File.new("#{target_path}/#{target_name}-#{lang}.srt", 'w')
-  srt_file.puts(srt['id'].join("\n"))
+  srt_file.puts(srt[lang].join("\n"))
   srt_file.close
 end
