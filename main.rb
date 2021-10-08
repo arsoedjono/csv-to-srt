@@ -10,7 +10,7 @@ unless filename
 end
 
 csv = CSV.parse(File.read(filename), headers: true)
-srt = SRT.new(:id, :en)
+srt = SRT.new(SRT.extract_languages(csv.headers))
 
 csv.each_with_index do |row, idx|
   srt.append(
