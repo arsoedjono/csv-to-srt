@@ -1,18 +1,12 @@
 $LOAD_PATH.unshift File.expand_path('lib', __dir__)
 
-require 'csv'
+require 'source_csv'
 require 'srt'
 
-filename = ARGV.first
+source = SourceCSV.new(ARGV.first)
+srt = SRT.new(SRT.extract_languages(source.csv.headers))
 
-unless filename
-  raise 'Please put the CSV file path as argument!'
-end
-
-csv = CSV.parse(File.read(filename), headers: true)
-srt = SRT.new(SRT.extract_languages(csv.headers))
-
-csv.each_with_index do |row, idx|
+source.csv.each_with_index do |row, idx|
   srt.append(
     index: idx,
     start_time: SRT.parse_time(row, :start),
@@ -21,8 +15,4 @@ csv.each_with_index do |row, idx|
   )
 end
 
-file_path = filename.split('/')
-target_path = file_path[0...-1].join('/')
-target_name = file_path[-1].split('.').first
-
-srt.to_file!(target_path, target_name)
+srt.to_file!(source.folder, source.name)
