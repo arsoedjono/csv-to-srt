@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift File.expand_path('lib', __dir__)
-
 require 'optparse'
 require 'require_all'
 
@@ -13,6 +11,7 @@ task :csv_to_srt do
 
   parser = OptionParser.new do |opts|
     opts.banner = 'Usage: rake csv_to_srt [options]'
+
     opts.on('-f', '--file FILE', 'Add source file') do |file_name|
       options[:file_name] = file_name
     end
@@ -20,6 +19,7 @@ task :csv_to_srt do
       puts opts
       exit 0
     end
+
     opts.order!(ARGV) {}
   end
   parser.parse!
