@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SRT
   class << self
     def extract_languages(headers)
