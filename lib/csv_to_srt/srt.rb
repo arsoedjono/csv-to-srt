@@ -36,9 +36,9 @@ class SRT
 
   def to_file!(path, name)
     @subtitle.each do |language, texts|
-      file = File.new("#{path}/#{name}-#{language}.srt", 'w')
-      file.puts(texts.join("\n"))
-      file.close
+      File.open("#{path}/#{name}-#{language}.srt", 'w') do |file|
+        file.write(texts.join("\n"))
+      end
     end
   end
 end
