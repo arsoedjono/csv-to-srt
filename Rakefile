@@ -12,8 +12,8 @@ task :csv_to_srt do
   parser = OptionParser.new do |opts|
     opts.banner = 'Usage: rake csv_to_srt [options]'
 
-    opts.on('-f', '--file FILE', 'Add source file') do |file_name|
-      options[:file_name] = file_name
+    opts.on('-f', '--file FILE', 'Add source file') do |path|
+      options[:path] = path
     end
     opts.on('-h', '--help', 'Prints help') do
       puts opts

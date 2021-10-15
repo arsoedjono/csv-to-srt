@@ -4,6 +4,7 @@ require 'require_all'
 require 'rspec/its'
 
 require_all 'lib/**/*.rb'
+require_all 'spec/contexts/**/*.rb'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

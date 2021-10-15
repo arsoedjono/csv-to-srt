@@ -3,12 +3,12 @@
 require 'fileutils'
 
 describe CsvToSrt do
+  include_context 'common'
+
   describe '#run' do
     subject { described_class.run(options) }
 
-    let(:options) { { file_name: "test/fake.csv" } }
-    let(:csv) { "s_hour,s_minute,s_second,s_msecond,e_hour,e_minute,e_second,e_msecond,text_id,text_en\n,,14,44,,,16,5,text indo,text eng" }
-    let(:srt) { /0\n00:00:14,440 --> 00:00:16,050\ntext (eng|indo)\n?/ }
+    let(:options) { { path: csv_path } }
 
     it 'should create SRT file(s)' do
       file = double('file')
