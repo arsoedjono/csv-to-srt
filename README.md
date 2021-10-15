@@ -3,10 +3,10 @@
 ## How to Use
 
 ```
-ruby main.rb "path/to/csv.csv"
+rake csv_to_srt -- --file path/to/csv.csv
 ```
 
-It will produce .srt files for Bahasa Indonesia (`-id`) and English (`-en`) in the same folder as the CSV file.
+It will produce .srt files for languages you have set in the CSV file within the same folder as the target CSV file.
 
 ## Boundaries
 
@@ -23,4 +23,11 @@ s_hour,s_minute,s_second,s_msecond,e_hour,e_minute,e_second,e_msecond,text_*
 > `text_*`: languages provided, it can be multiple by separating it with comma, e.g. `...,text_id,text_en`
 
 - Empty time will be converted to 0
-- Time will have leading zeros, if necessary
+
+## Testing
+
+Run this command to execute the unit test
+
+```bash
+rspec
+```
